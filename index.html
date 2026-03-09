@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Kanban Board</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-left">
+                <h1><i class="fa-solid fa-layer-group"></i> Kanban Board</h1>
+            </div>
+            <div class="controls">
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-search search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Search tasks...">
+                </div>
+                <button id="themeToggle" class="btn icon-btn" title="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+                <button id="addTaskBtn" class="btn primary-btn"><i class="fa-solid fa-plus"></i> Add Task</button>
+            </div>
+        </header>
+
+        <main class="board">
+            <div class="column" data-status="Todo">
+                <div class="column-header">
+                    <h2>To Do <span class="task-count" id="todo-count">0</span></h2>
+                </div>
+                <div class="task-list" id="Todo-list"></div>
+            </div>
+            
+            <div class="column" data-status="In Progress">
+                <div class="column-header">
+                    <h2>In Progress <span class="task-count" id="inprogress-count">0</span></h2>
+                </div>
+                <div class="task-list" id="InProgress-list"></div>
+            </div>
+            
+            <div class="column" data-status="Done">
+                <div class="column-header">
+                    <h2>Done <span class="task-count" id="done-count">0</span></h2>
+                </div>
+                <div class="task-list" id="Done-list"></div>
+            </div>
+        </main>
+    </div>
+
+    
+    <div id="taskModal" class="modal-overlay hidden">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="modalTitle"><i class="fa-solid fa-tasks"></i> New Task</h2>
+                <button id="closeModalBtn" class="btn icon-btn close-btn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="taskForm">
+                <input type="hidden" id="taskId">
+                <div class="form-group-block">
+                    <label for="taskTitle">Task Title</label>
+                    <input type="text" id="taskTitle" placeholder="e.g., Update website header" required>
+                </div>
+                <div class="form-group-block">
+                    <label for="taskDesc">Description</label>
+                    <textarea id="taskDesc" placeholder="Add more details about this task..." rows="4"></textarea>
+                </div>
+                
+                <div class="form-group row">
+                    <div class="form-group-block half">
+                        <label for="taskPriority">Priority</label>
+                        <select id="taskPriority">
+                            <option value="Low">Low Priority</option>
+                            <option value="Medium">Medium Priority</option>
+                            <option value="High">High Priority</option>
+                        </select>
+                    </div>
+                    <div class="form-group-block half">
+                        <label for="taskStatus">Status</label>
+                        <select id="taskStatus">
+                            <option value="Todo">To Do</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Done">Done</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn primary-btn full-width"><i class="fa-solid fa-check"></i> Save Task</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
